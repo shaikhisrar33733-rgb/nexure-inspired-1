@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 2. NAVBAR SCROLL EFFECT & ACTIVE LINK HIGHLIGHTING ---
   const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
   const sections = document.querySelectorAll('section[id]');
 
   const handleNavScroll = () => {
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.classList.remove('scrolled');
     }
 
-    // ScrollSpy: Highlight active navigation link
+    // ScrollSpy: Highlight active navigation link across both desktop and mobile
     let currentSectionId = '';
     const scrollPosition = window.scrollY + 120;
 
@@ -129,49 +130,86 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentSectionId}`) {
-        link.classList.add('active');
-      }
-    });
+    const updateActiveLinks = (links) => {
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSectionId}`) {
+          link.classList.add('active');
+        }
+      });
+    };
+
+    updateActiveLinks(navLinks);
+    updateActiveLinks(mobileNavLinks);
   };
 
   window.addEventListener('scroll', handleNavScroll, { passive: true });
 
-  // --- 3. MOBILE MENU TOGGLE ---
+  // --- 3. PROPER MOBILE NAVIGATION DRAWER CONTROLLER ---
   const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('navMenu');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
+  const mobileDrawerClose = document.getElementById('mobileDrawerClose');
 
-  if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-      hamburger.setAttribute('aria-expanded', !isExpanded);
-      document.body.style.overflow = isExpanded ? '' : 'hidden';
-    });
+  const openMobileDrawer = () => {
+    if (!mobileDrawer) return;
+    hamburger.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileDrawer.classList.add('active');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    if (mobileDrawerOverlay) {
+      mobileDrawerOverlay.classList.add('active');
+      mobileDrawerOverlay.setAttribute('aria-hidden', 'false');
+    }
+    document.body.style.overflow = 'hidden';
+  };
 
-    // Close menu when a nav link is clicked
-    document.querySelectorAll('.nav-link, .nav-mobile-cta a').forEach(item => {
-      item.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
-    });
+  const closeMobileDrawer = () => {
+    if (!mobileDrawer) return;
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileDrawer.classList.remove('active');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    if (mobileDrawerOverlay) {
+      mobileDrawerOverlay.classList.remove('active');
+      mobileDrawerOverlay.setAttribute('aria-hidden', 'true');
+    }
+    document.body.style.overflow = '';
+  };
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+  if (hamburger) {
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = mobileDrawer.classList.contains('active');
+      if (isOpen) {
+        closeMobileDrawer();
+      } else {
+        openMobileDrawer();
       }
     });
   }
+
+  if (mobileDrawerClose) {
+    mobileDrawerClose.addEventListener('click', closeMobileDrawer);
+  }
+
+  if (mobileDrawerOverlay) {
+    mobileDrawerOverlay.addEventListener('click', closeMobileDrawer);
+  }
+
+  // Close mobile drawer when clicking any link inside it
+  document.querySelectorAll('.mobile-nav-link, .mobile-cta-btn, .mobile-brand, .mobile-contact-item').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileDrawer();
+    });
+  });
+
+  // Close on Escape key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('active')) {
+      closeMobileDrawer();
+    }
+  });
 
   // --- 4. SMOOTH SCROLLING WITH NAVBAR OFFSET ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

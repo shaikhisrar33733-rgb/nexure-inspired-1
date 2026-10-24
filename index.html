@@ -55,6 +55,7 @@
         </div>
       </a>
 
+      <!-- Desktop Navigation Menu -->
       <nav class="nav-menu" id="navMenu">
         <ul class="nav-list">
           <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
@@ -65,9 +66,6 @@
           <li class="nav-item"><a href="#insights" class="nav-link">Insights</a></li>
           <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
-        <div class="nav-mobile-cta">
-          <a href="#appointment" class="btn btn-primary btn-block">Book Appointment</a>
-        </div>
       </nav>
 
       <div class="nav-actions">
@@ -75,7 +73,7 @@
           <span>Book Appointment</span>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -83,6 +81,141 @@
       </div>
     </div>
   </header>
+
+  <!-- Proper Modern Mobile Navigation Drawer & Backdrop -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" aria-hidden="true"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation Drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <a href="#hero" class="brand mobile-brand" aria-label="NexuraMed Home">
+        <div class="brand-logo-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="#14532D"/>
+            <path d="M16 7V25M7 16H25" stroke="#4CAF78" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="3" fill="#FFFFFF"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Nexura<span class="brand-highlight">Med</span></span>
+          <span class="brand-subtitle">HEALTHCARE INNOVATIONS</span>
+        </div>
+      </a>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-drawer-body">
+      <div class="mobile-drawer-label">Quick Navigation</div>
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
+          <a href="#hero" class="mobile-nav-link active">
+            <span class="mobile-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </span>
+            <span class="mobile-nav-text">Home</span>
+            <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#about" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </span>
+            <span class="mobile-nav-text">About Us</span>
+            <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#products" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </span>
+            <span class="mobile-nav-text">Medical Devices</span>
+            <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#services" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </span>
+            <span class="mobile-nav-text">Clinical Services</span>
+            <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#why-us" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <span class="mobile-nav-text">Why Choose Us</span>
+            <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#insights" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </span>
+            <span class="mobile-nav-text">Research & Insights</span>
+            <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#contact" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span class="mobile-nav-text">Contact Liaisons</span>
+            <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+      </ul>
+
+      <div class="mobile-drawer-cta">
+        <a href="#appointment" class="btn btn-primary btn-block mobile-cta-btn">
+          <span>Book an Appointment</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+
+      <div class="mobile-drawer-contact">
+        <div class="mobile-status-pill">
+          <span class="pulse-dot"></span>
+          <span>Clinical Telemetry Online 24/7</span>
+        </div>
+        <div class="mobile-contact-links">
+          <a href="tel:+18004829390" class="mobile-contact-item">
+            <div class="mobile-contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <span class="mobile-contact-label">Urgent Clinical Line</span>
+              <span class="mobile-contact-val">+1 (800) 482-9390</span>
+            </div>
+          </a>
+          <a href="mailto:contact@nexuramed.com" class="mobile-contact-item">
+            <div class="mobile-contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <span class="mobile-contact-label">Direct Email</span>
+              <span class="mobile-contact-val">contact@nexuramed.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="mobile-drawer-footer">
+        <span class="mobile-footer-tag">FDA Cleared</span>
+        <span class="mobile-footer-tag">ISO 13485</span>
+        <span class="mobile-footer-tag">HIPAA Compliant</span>
+      </div>
+    </div>
+  </aside>
 
   <main>
     <!-- HERO SECTION -->
